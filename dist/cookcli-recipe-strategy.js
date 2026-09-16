@@ -56,7 +56,7 @@ class CookCliDashboardStrategy extends HTMLElement {
   }
 
   static getConfigElement() {
-    return document.createElement("ll-strategy-cookcli-editor");
+    return document.createElement("cookcli-strategy-editor");
   }
 
   static configRequired = true;
