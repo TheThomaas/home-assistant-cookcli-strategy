@@ -72,6 +72,7 @@ class CookCliDashboardStrategy extends HTMLElement {
     const listView = {
       title: config.title || "Recettes",
       path: "recettes",
+      panel: true,
       cards: [
         {
           type: "custom:cookcli-card",
@@ -84,6 +85,7 @@ class CookCliDashboardStrategy extends HTMLElement {
     const recipeViews = recipes.map((recipe) => ({
       path: recipe.view_path,
       subview: true,
+      panel: true,
       strategy: {
         type: "custom:cookcli-recipe",
         path: recipe.path,
