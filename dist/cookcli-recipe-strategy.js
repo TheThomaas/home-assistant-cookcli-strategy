@@ -405,7 +405,7 @@ class CookCliDashboardStrategyEditor extends HTMLElement {
 
 customElements.define("ll-strategy-dashboard-cookcli", CookCliDashboardStrategy);
 customElements.define("ll-strategy-view-cookcli-recipe", CookCliRecipeViewStrategy);
-customElements.define("ll-strategy-cookcli-editor", MyDemoStrategyEditor);
+customElements.define("ll-strategy-cookcli-editor", CookCliDashboardStrategyEditor);
 
 window.customStrategies = window.customStrategies || [];
 window.customStrategies.push({
