@@ -276,6 +276,12 @@ class CookCliRecipeViewStrategy extends HTMLElement {
       },
       card: {
         type: "horizontal-stack",
+        card_mod: {
+          style:
+            "hui-horizontal-stack-card $: | " +
+            "div#root > :first-child { width: 30%; flex: auto; } " +
+            "div#root > :last-child { width: 70%; flex: auto; }",
+        },
         cards: [
           { type: "vertical-stack", cards: leftCards },
           { type: "markdown", content: stepMarkdown },
