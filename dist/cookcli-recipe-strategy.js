@@ -89,7 +89,6 @@ class CookCliDashboardStrategy extends HTMLElement {
       strategy: {
         type: "custom:cookcli-recipe",
         path: recipe.path,
-        panel: true,
         timer_entity: config.timer_entity,
         step_entity: config.step_entity,
         entry_id: config.entry_id,
@@ -162,6 +161,7 @@ class CookCliRecipeViewStrategy extends HTMLElement {
 
     const tabdeckCard = {
       type: "custom:tabdeck-card",
+      panel: true,
       default_tab: 0,
       tabs,
     };
