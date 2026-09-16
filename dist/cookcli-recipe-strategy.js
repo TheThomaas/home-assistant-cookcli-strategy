@@ -86,7 +86,6 @@ class CookCliDashboardStrategy extends HTMLElement {
       path: recipe.view_path,
       subview: true,
       panel: true,
-      title: recipe.title,
       strategy: {
         type: "custom:cookcli-recipe",
         path: recipe.path,
@@ -172,7 +171,8 @@ class CookCliRecipeViewStrategy extends HTMLElement {
     }
 
     return {
-      title: recipe.title || "Recette",
+      // title: recipe.title || "Recette",
+      title: "Recette",
       panel: true,
       cards: [tabdeckCard],
     };
