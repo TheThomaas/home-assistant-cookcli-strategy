@@ -244,14 +244,12 @@ class CookCliRecipeViewStrategy extends HTMLElement {
     const stepIngredients = (step.items || []).filter((item) => item.type === "ingredient");
     if (stepIngredients.length) {
       const lines = stepIngredients.map((item) => {
-        const qty = item.quantity
+        const qty = item.quantity ?? ""
           ? `${item.quantity.value ?? ""} ${item.quantity.unit ?? ""}`.trim()
           : "";
-        return `- ${qty ? `**${qty}** ` : ""}${item.name}`;
+        return `- ${qty ? `**${qty}** ` : ""}${item.name ?? ""}`;
       });
-      if (lines.trim() !== "") {
-        leftCards.push({ type: "markdown", content: lines.join("\n") });
-      }
+      leftCards.push({ type: "markdown", content: lines.join("\n") });
     }
 
     if (config.timer_entity) {
