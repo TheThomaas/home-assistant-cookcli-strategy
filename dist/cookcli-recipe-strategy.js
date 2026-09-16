@@ -220,6 +220,13 @@ class CookCliRecipeViewStrategy extends HTMLElement {
         type: "todo-list",
         entity: recipe.todo_entity_id,
         title: "Ingrédients",
+        card_mod: {
+          style: `
+              ha-list .header {
+                display: none;
+              }
+            `
+        }
       });
     }
 
