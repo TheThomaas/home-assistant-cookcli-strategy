@@ -172,6 +172,7 @@ class CookCliRecipeViewStrategy extends HTMLElement {
 
     return {
       title: recipe.title || "Recette",
+      panel: true,
       cards: [tabdeckCard],
     };
   }
