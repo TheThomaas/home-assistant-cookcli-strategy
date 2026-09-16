@@ -404,6 +404,8 @@ class CookcliStrategyEditor extends HTMLElement {
   }
 
   _render() {
+    console.log("Editor render appelé", this._config, this._hass);
+    
     // On attend d'avoir hass avant de rendre : ha-textfield en a besoin
     // pour son thème et ses styles.
     if (!this._hass) {
