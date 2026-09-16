@@ -249,7 +249,7 @@ class CookCliRecipeViewStrategy extends HTMLElement {
           : "";
         return `- ${qty ? `**${qty}** ` : ""}${item.name}`;
       });
-      if (lines !== "") {
+      if (lines.trim() !== "") {
         leftCards.push({ type: "markdown", content: lines.join("\n") });
       }
     }
