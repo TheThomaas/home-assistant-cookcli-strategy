@@ -405,7 +405,7 @@ class CookcliStrategyEditor extends HTMLElement {
 
   _render() {
     console.log("Editor render appelé", this._config, this._hass);
-    
+
     // On attend d'avoir hass avant de rendre : ha-textfield en a besoin
     // pour son thème et ses styles.
     if (!this._hass) {
@@ -415,51 +415,34 @@ class CookcliStrategyEditor extends HTMLElement {
 
     const c = this._config || {};
 
+    // Remplacer temporairement ha-textfield par des inputs natifs
     this.innerHTML = `
       <div style="padding: 16px; display: flex; flex-direction: column; gap: 16px;">
-        <ha-textfield
-          label="Titre du dashboard"
-          value="${c.title || ""}"
-          data-config-key="title"
-          helper="Titre affiché dans l'onglet"
-          style="width: 100%;"
-        ></ha-textfield>
-
-        <ha-textfield
-          label="Entité minuteur"
-          value="${c.timer_entity || ""}"
-          data-config-key="timer_entity"
-          helper="Ex: timer.recette_en_cours"
-          style="width: 100%;"
-        ></ha-textfield>
-
-        <ha-textfield
-          label="Entité étape"
-          value="${c.step_entity || ""}"
-          data-config-key="step_entity"
-          helper="Ex: input_number.recette_etape"
-          style="width: 100%;"
-        ></ha-textfield>
-
-        <ha-textfield
-          label="Entry ID (optionnel)"
-          value="${c.entry_id || ""}"
-          data-config-key="entry_id"
-          helper="Laisser vide si un seul serveur CookCLI"
-          style="width: 100%;"
-        ></ha-textfield>
+        <label>
+          Titre du dashboard
+          <input type="text" value="${c.title || ""}" data-config-key="title" style="width: 100%;" />
+        </label>
+        <label>
+          Entité minuteur
+          <input type="text" value="${c.timer_entity || ""}" data-config-key="timer_entity" style="width: 100%;" />
+        </label>
+        <label>
+          Entité étape
+          <input type="text" value="${c.step_entity || ""}" data-config-key="step_entity" style="width: 100%;" />
+        </label>
+        <label>
+          Entry ID (optionnel)
+          <input type="text" value="${c.entry_id || ""}" data-config-key="entry_id" style="width: 100%;" />
+        </label>
       </div>
     `;
 
-    // On attache les écouteurs en JS natif, car la syntaxe @change de Lit
-    // n'est pas interprétée dans un innerHTML classique.
+    // Écouteurs natifs (change au lieu de input pour éviter les re-rendus intempestifs)
     this.querySelectorAll("[data-config-key]").forEach((champ) => {
       champ.addEventListener("change", (ev) => {
         const cle = ev.target.dataset.configKey;
         const nouvelleConfig = { ...this._config, [cle]: ev.target.value };
         this._config = nouvelleConfig;
-
-        // On notifie HA du changement : il met à jour la config du dashboard
         this.dispatchEvent(
           new CustomEvent("config-changed", {
             bubbles: true,
