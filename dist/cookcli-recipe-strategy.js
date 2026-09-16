@@ -406,7 +406,7 @@ class CookcliStrategyEditor extends HTMLElement {
   _render() {
     console.log("Editor render appelé", this._config, this._hass);
 
-    // On attend d'avoir hass avant de rendre : ha-textfield en a besoin
+    // On attend d'avoir hass avant de rendre : ha-input en a besoin
     // pour son thème et ses styles.
     if (!this._hass) {
       this.innerHTML = `<div style="padding:16px">Chargement…</div>`;
@@ -418,37 +418,37 @@ class CookcliStrategyEditor extends HTMLElement {
     // Remplacer temporairement ha-textfield par des inputs natifs
     this.innerHTML = `
       <div style="padding: 16px; display: flex; flex-direction: column; gap: 16px;">
-        <ha-textfield
+        <ha-input
           label="Titre du dashboard"
           value="${c.title || ""}"
           data-config-key="title"
           helper="Titre affiché dans l'onglet"
           style="width: 100%;"
-        ></ha-textfield>
+        ></ha-input>
 
-        <ha-textfield
+        <ha-input
           label="Entité minuteur"
           value="${c.timer_entity || ""}"
           data-config-key="timer_entity"
           helper="Ex: timer.recette_en_cours"
           style="width: 100%;"
-        ></ha-textfield>
+        ></ha-input>
 
-        <ha-textfield
+        <ha-input
           label="Entité étape"
           value="${c.step_entity || ""}"
           data-config-key="step_entity"
           helper="Ex: input_number.recette_etape"
           style="width: 100%;"
-        ></ha-textfield>
+        ></ha-input>
 
-        <ha-textfield
+        <ha-input
           label="Entry ID (optionnel)"
           value="${c.entry_id || ""}"
           data-config-key="entry_id"
           helper="Laisser vide si un seul serveur CookCLI"
           style="width: 100%;"
-        ></ha-textfield>
+        ></ha-input>
       </div>
     `;
  
