@@ -392,6 +392,58 @@ class CookcliStrategyEditor extends HTMLElement {
     this._hass = hass;
   }
 
+  // Méthode appelée quand l'utilisateur modifie un champ
+  _valueChanged(ev) {
+    if (!this._config || !this._hass) {
+      return;
+    }
+    const target = ev.target;
+    const newConfig = { ...this._config };
+    
+    // Mettre à jour la clé correspondant au nom du champ
+    newConfig[target.configValue] = target.value;
+
+    // Informer Home Assistant du changement
+    this.dispatchEvent(
+      new CustomEvent("config-changed", {
+        bubbles: true,
+        composed: true,
+        detail: { config: newConfig },
+      })
+    );
+  }
+
+  // Méthode de rendu (obligatoire pour afficher le formulaire)
+  connectedCallback() {
+    this.innerHTML = `
+      <div style="padding: 16px;">
+        <ha-textfield
+          label="Entité minuteur"
+          .value="${this._config.timer_entity || ''}"
+          configValue="timer_entity"
+          @change="${this._valueChanged.bind(this)}"
+          helper="Ex: timer.recette_en_cours"
+          style="width: 100%; margin-bottom: 16px;"
+        ></ha-textfield>
+        <ha-textfield
+          label="Entité étape"
+          .value="${this._config.step_entity || ''}"
+          configValue="step_entity"
+          @change="${this._valueChanged.bind(this)}"
+          helper="Ex: input_number.recette_etape"
+          style="width: 100%; margin-bottom: 16px;"
+        ></ha-textfield>
+        <ha-textfield
+          label="Entry ID (optionnel)"
+          .value="${this._config.entry_id || ''}"
+          configValue="entry_id"
+          @change="${this._valueChanged.bind(this)}"
+          style="width: 100%;"
+        ></ha-textfield>
+      </div>
+    `;
+  }
+
   configChanged(newConfig) {
     this.dispatchEvent(
       new CustomEvent("config-changed", {
