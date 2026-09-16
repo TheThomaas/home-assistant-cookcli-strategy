@@ -55,8 +55,30 @@ class CookCliDashboardStrategy extends HTMLElement {
     return { title: "Recettes", icon: "mdi:chef-hat" };
   }
 
-  static getConfigElement() {
-    return document.createElement("cookcli-strategy-editor");
+  static getConfigForm() {
+    return {
+      schema: [
+        { name: "title", selector: { text: {} }, label: "Titre" },
+        {
+          name: "timer_entity",
+          selector: { entity: { domain: "timer" } },
+          label: "Entité minuteur",
+          helper: "Ex: timer.recette_en_cours",
+        },
+        {
+          name: "step_entity",
+          selector: { entity: { domain: "input_number" } },
+          label: "Entité étape",
+          helper: "Ex: input_number.recette_etape",
+        },
+        {
+          name: "entry_id",
+          selector: { text: {} },
+          label: "Entry ID",
+          helper: "Optionnel — si plusieurs serveurs CookCLI",
+        },
+      ],
+    };
   }
 
   static configRequired = true;
@@ -383,81 +405,8 @@ class CookCliRecipeViewStrategy extends HTMLElement {
   }
 }
 
-/*class CookcliStrategyEditor extends HTMLElement {
-  setConfig(config) {
-    this._config = config;
-  }
-
-  set hass(hass) {
-    this._hass = hass;
-  }
-
-  // Méthode appelée quand l'utilisateur modifie un champ
-  _valueChanged(ev) {
-    if (!this._config || !this._hass) {
-      return;
-    }
-    const target = ev.target;
-    const newConfig = { ...this._config };
-    
-    // Mettre à jour la clé correspondant au nom du champ
-    newConfig[target.configValue] = target.value;
-
-    // Informer Home Assistant du changement
-    this.dispatchEvent(
-      new CustomEvent("config-changed", {
-        bubbles: true,
-        composed: true,
-        detail: { config: newConfig },
-      })
-    );
-  }
-
-  // Méthode de rendu (obligatoire pour afficher le formulaire)
-  connectedCallback() {
-    this.innerHTML = `
-      <div style="padding: 16px;">
-        <ha-textfield
-          label="Entité minuteur"
-          .value="${this._config.timer_entity || ''}"
-          configValue="timer_entity"
-          @change="${this._valueChanged.bind(this)}"
-          helper="Ex: timer.recette_en_cours"
-          style="width: 100%; margin-bottom: 16px;"
-        ></ha-textfield>
-        <ha-textfield
-          label="Entité étape"
-          .value="${this._config.step_entity || ''}"
-          configValue="step_entity"
-          @change="${this._valueChanged.bind(this)}"
-          helper="Ex: input_number.recette_etape"
-          style="width: 100%; margin-bottom: 16px;"
-        ></ha-textfield>
-        <ha-textfield
-          label="Entry ID (optionnel)"
-          .value="${this._config.entry_id || ''}"
-          configValue="entry_id"
-          @change="${this._valueChanged.bind(this)}"
-          style="width: 100%;"
-        ></ha-textfield>
-      </div>
-    `;
-  }
-
-  configChanged(newConfig) {
-    this.dispatchEvent(
-      new CustomEvent("config-changed", {
-        bubbles: true,
-        composed: true,
-        detail: { config: newConfig },
-      })
-    );
-  }
-}*/
-
 customElements.define("ll-strategy-dashboard-cookcli", CookCliDashboardStrategy);
 customElements.define("ll-strategy-view-cookcli-recipe", CookCliRecipeViewStrategy);
-//customElements.define("cookcli-strategy-editor", CookcliStrategyEditor);
 
 window.customStrategies = window.customStrategies || [];
 window.customStrategies.push({
