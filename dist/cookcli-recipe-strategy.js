@@ -85,10 +85,10 @@ class CookCliDashboardStrategy extends HTMLElement {
     const recipeViews = recipes.map((recipe) => ({
       path: recipe.view_path,
       subview: true,
-      panel: true,
       strategy: {
         type: "custom:cookcli-recipe",
         path: recipe.path,
+        panel: true,
         timer_entity: config.timer_entity,
         step_entity: config.step_entity,
         entry_id: config.entry_id,
