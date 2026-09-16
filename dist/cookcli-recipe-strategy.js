@@ -301,7 +301,7 @@ class CookCliRecipeViewStrategy extends HTMLElement {
 
     return {
       name: section.name ? `${section.name} ${step.number ?? ""}`.trim() : `Étape ${tabIndex}`,
-      icon: "mdi:numeric-" + (tabIndex <= 9 ? tabIndex : "9-plus") + "-circle-outline",
+      // icon: "mdi:numeric-" + (tabIndex <= 9 ? tabIndex : "9-plus") + "-circle-outline",
       card: { type: "vertical-stack", cards },
     };
   }
