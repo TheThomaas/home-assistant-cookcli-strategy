@@ -171,8 +171,7 @@ class CookCliRecipeViewStrategy extends HTMLElement {
     }
 
     return {
-      // title: recipe.title || "Recette",
-      title: "Recette",
+      title: recipe.title || "Recette",
       panel: true,
       cards: [tabdeckCard],
     };
@@ -208,7 +207,7 @@ class CookCliRecipeViewStrategy extends HTMLElement {
 
   static _summaryTab(recipe, config, stepCount) {
     let content = "";
-    if (recipe.image_url) content += `![](${recipe.image_url})\n\n`;
+    if (recipe.image_url) content += `![image de la recette](${recipe.image_url})\n\n`;
     content += `## ${recipe.title || ""}\n`;
     if (recipe.cookware && recipe.cookware.length) {
       content += `\n**Ustensiles** : ${recipe.cookware.map((c) => c.name).join(", ")}\n`;
