@@ -386,16 +386,16 @@ class CookCliRecipeViewStrategy extends HTMLElement {
 class CookcliStrategyEditor extends HTMLElement {
   setConfig(config) {
     this._config = config;
-    if (this.isConnected) {
+    /*if (this.isConnected) {
       this._render();
-    }
+    }*/
   }
 
   set hass(hass) {
     this._hass = hass;
-    if (this.isConnected) {
+    /*if (this.isConnected) {
       this._render();
-    }
+    }*/
   }
 
   // Appelé automatiquement quand l'élément est inséré dans le DOM
