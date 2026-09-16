@@ -383,7 +383,7 @@ class CookCliRecipeViewStrategy extends HTMLElement {
   }
 }
 
-class CookCliDashboardStrategyEditor extends HTMLElement {
+class CookcliStrategyEditor extends HTMLElement {
   setConfig(config) {
     this._config = config;
   }
@@ -405,7 +405,7 @@ class CookCliDashboardStrategyEditor extends HTMLElement {
 
 customElements.define("ll-strategy-dashboard-cookcli", CookCliDashboardStrategy);
 customElements.define("ll-strategy-view-cookcli-recipe", CookCliRecipeViewStrategy);
-customElements.define("ll-strategy-cookcli-editor", CookCliDashboardStrategyEditor);
+customElements.define("cookcli-strategy-editor", CookcliStrategyEditor);
 
 window.customStrategies = window.customStrategies || [];
 window.customStrategies.push({
