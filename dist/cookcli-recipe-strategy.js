@@ -86,6 +86,7 @@ class CookCliDashboardStrategy extends HTMLElement {
       path: recipe.view_path,
       subview: true,
       panel: true,
+      title: recipe.title,
       strategy: {
         type: "custom:cookcli-recipe",
         path: recipe.path,
