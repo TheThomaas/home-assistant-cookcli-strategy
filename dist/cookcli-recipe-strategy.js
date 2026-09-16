@@ -451,7 +451,7 @@ class CookcliStrategyEditor extends HTMLElement {
         ></ha-input>
       </div>
     `;
- 
+
     // Écouteurs natifs (change au lieu de input pour éviter les re-rendus intempestifs)
     this.querySelectorAll("[data-config-key]").forEach((champ) => {
       champ.addEventListener("change", (ev) => {
