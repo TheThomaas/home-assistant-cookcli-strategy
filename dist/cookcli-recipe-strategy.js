@@ -55,6 +55,12 @@ class CookCliDashboardStrategy extends HTMLElement {
     return { title: "Recettes", icon: "mdi:chef-hat" };
   }
 
+  static getConfigElement() {
+    return document.createElement("my-demo-strategy-editor");
+  }
+
+  static configRequired = true;
+
   static async generate(config, hass) {
     config = config || {};
 
@@ -377,8 +383,29 @@ class CookCliRecipeViewStrategy extends HTMLElement {
   }
 }
 
+class CookCliDashboardStrategyEditor extends HTMLElement {
+  setConfig(config) {
+    this._config = config;
+  }
+
+  set hass(hass) {
+    this._hass = hass;
+  }
+
+  configChanged(newConfig) {
+    this.dispatchEvent(
+      new CustomEvent("config-changed", {
+        bubbles: true,
+        composed: true,
+        detail: { config: newConfig },
+      })
+    );
+  }
+}
+
 customElements.define("ll-strategy-dashboard-cookcli", CookCliDashboardStrategy);
 customElements.define("ll-strategy-view-cookcli-recipe", CookCliRecipeViewStrategy);
+customElements.define("ll-strategy-cookcli-editor", MyDemoStrategyEditor);
 
 window.customStrategies = window.customStrategies || [];
 window.customStrategies.push({
