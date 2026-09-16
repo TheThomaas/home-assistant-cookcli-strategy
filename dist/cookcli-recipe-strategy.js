@@ -267,26 +267,11 @@ class CookCliRecipeViewStrategy extends HTMLElement {
     }
 
     const columns = {
-      type: "custom:mod-card",
-      card_mod: {
-        style:
-          "hui-horizontal-stack-card $: | " +
-          "div#root > :first-child { width: 30%; flex: auto; } " +
-          "div#root > :last-child { width: 70%; flex: auto; }",
-      },
-      card: {
-        type: "horizontal-stack",
-        card_mod: {
-          style:
-            "hui-horizontal-stack-card $: | " +
-            "div#root > :first-child { width: 30%; flex: auto; } " +
-            "div#root > :last-child { width: 70%; flex: auto; }",
-        },
-        cards: [
-          { type: "vertical-stack", cards: leftCards },
-          { type: "markdown", content: stepMarkdown },
-        ],
-      },
+      type: "horizontal-stack",
+      cards: [
+        { type: "vertical-stack", cards: leftCards },
+        { type: "markdown", content: stepMarkdown },
+      ],
     };
 
     const cards = [columns];
