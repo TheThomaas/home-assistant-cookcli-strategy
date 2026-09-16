@@ -249,7 +249,9 @@ class CookCliRecipeViewStrategy extends HTMLElement {
           : "";
         return `- ${qty ? `**${qty}** ` : ""}${item.name}`;
       });
-      leftCards.push({ type: "markdown", content: lines.join("\n") });
+      if (lines !== "") {
+        leftCards.push({ type: "markdown", content: lines.join("\n") });
+      }
     }
 
     if (config.timer_entity) {
@@ -274,7 +276,7 @@ class CookCliRecipeViewStrategy extends HTMLElement {
 
     if (!leftCards.length) {
       // horizontal-stack veut deux cartes ; une carte vide maintient le ratio.
-      leftCards.push({ type: "markdown", content: "" });
+      leftCards.push({ type: "markdown", content: " " });
     }
 
     const columns = {
