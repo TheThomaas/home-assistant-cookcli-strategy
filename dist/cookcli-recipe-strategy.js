@@ -443,13 +443,13 @@ class CookcliStrategyEditor extends HTMLElement {
         const cle = ev.target.dataset.configKey;
         const nouvelleConfig = { ...this._config, [cle]: ev.target.value };
         this._config = nouvelleConfig;
-        this.dispatchEvent(
+        /*this.dispatchEvent(
           new CustomEvent("config-changed", {
             bubbles: true,
             composed: true,
             detail: { config: nouvelleConfig },
           })
-        );
+        );*/
       });
     });
   }
