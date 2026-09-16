@@ -418,22 +418,37 @@ class CookcliStrategyEditor extends HTMLElement {
     // Remplacer temporairement ha-textfield par des inputs natifs
     this.innerHTML = `
       <div style="padding: 16px; display: flex; flex-direction: column; gap: 16px;">
-        <label>
-          Titre du dashboard
-          <input type="text" value="${c.title || ""}" data-config-key="title" style="width: 100%;" />
-        </label>
-        <label>
-          Entité minuteur
-          <input type="text" value="${c.timer_entity || ""}" data-config-key="timer_entity" style="width: 100%;" />
-        </label>
-        <label>
-          Entité étape
-          <input type="text" value="${c.step_entity || ""}" data-config-key="step_entity" style="width: 100%;" />
-        </label>
-        <label>
-          Entry ID (optionnel)
-          <input type="text" value="${c.entry_id || ""}" data-config-key="entry_id" style="width: 100%;" />
-        </label>
+        <ha-textfield
+          label="Titre du dashboard"
+          value="${c.title || ""}"
+          data-config-key="title"
+          helper="Titre affiché dans l'onglet"
+          style="width: 100%;"
+        ></ha-textfield>
+
+        <ha-textfield
+          label="Entité minuteur"
+          value="${c.timer_entity || ""}"
+          data-config-key="timer_entity"
+          helper="Ex: timer.recette_en_cours"
+          style="width: 100%;"
+        ></ha-textfield>
+
+        <ha-textfield
+          label="Entité étape"
+          value="${c.step_entity || ""}"
+          data-config-key="step_entity"
+          helper="Ex: input_number.recette_etape"
+          style="width: 100%;"
+        ></ha-textfield>
+
+        <ha-textfield
+          label="Entry ID (optionnel)"
+          value="${c.entry_id || ""}"
+          data-config-key="entry_id"
+          helper="Laisser vide si un seul serveur CookCLI"
+          style="width: 100%;"
+        ></ha-textfield>
       </div>
     `;
 
