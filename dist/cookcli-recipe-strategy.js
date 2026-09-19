@@ -223,17 +223,16 @@ class CookCliRecipeViewStrategy extends HTMLElement {
     const cards = [{ 
       type: "markdown", 
       content,
-      card_mod: {
-        style: `
-          img[alt="image de la recette"] {
+      card_mod: `
+        style: |
+          img {
             width: 100%;
             aspect-ratio: 16 / 10;
             object-fit: cover;
             border-radius: 12px;
             margin-bottom: 8px;
           }
-        `
-      }
+      `
     }];
 
     const rightCards = [];
