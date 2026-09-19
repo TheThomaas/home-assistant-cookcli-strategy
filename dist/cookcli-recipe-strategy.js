@@ -219,7 +219,21 @@ class CookCliRecipeViewStrategy extends HTMLElement {
       content += `\n**Ustensiles** : ${recipe.cookware.map((c) => c.name).join(", ")}\n`;
     }
 
-    const cards = [{ type: "markdown", content }];
+    const cards = [{ 
+      type: "markdown", 
+      content,
+      card_mod: {
+        style: `
+          img {
+            width: 100%;
+            max-height: 250px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 8px;
+          }
+        `
+      }
+    }];
 
     const rightCards = [];
 
