@@ -214,7 +214,7 @@ class CookCliRecipeViewStrategy extends HTMLElement {
   static _summaryTab(recipe, config, stepCount) {
     let content = "";
     //if (recipe.image_url) content += `![image de la recette](${recipe.image_url})\n\n`;
-    if (recipe.image_url) content += `<img src='${recipe.image_url}' alt='image de la recette' style='width: 100%;aspect-ratio: 16 / 10;object-fit: cover;border-radius: 12px;margin-bottom: 8px;    '></img>\n\n`;
+    if (recipe.image_url) content += `<img src='${recipe.image_url}' alt='image de la recette' style='width: 100%;aspect-ratio: 16 / 10;object-fit: cover;border-radius: 12px;margin-bottom: 8px;' />\n\n`;
     content += `## ${recipe.title || ""}\n`;
     if (recipe.cookware && recipe.cookware.length) {
       content += `\n**Ustensiles** : ${recipe.cookware.map((c) => c.name).join(", ")}\n`;
