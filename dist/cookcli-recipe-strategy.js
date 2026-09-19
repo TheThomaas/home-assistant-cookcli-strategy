@@ -221,8 +221,10 @@ class CookCliRecipeViewStrategy extends HTMLElement {
 
     const cards = [{ type: "markdown", content }];
 
+    const rightCards = [];
+
     if (recipe.todo_entity_id) {
-      cards.push({
+      rightCards.push({
         type: "todo-list",
         entity: recipe.todo_entity_id,
         title: "Ingrédients",
@@ -237,10 +239,12 @@ class CookCliRecipeViewStrategy extends HTMLElement {
     }
 
     if (config.step_entity && stepCount > 0) {
-      cards.push(this._navButton(config.step_entity, 1, "Commencer", "mdi:play"));
+      rightCards.push(this._navButton(config.step_entity, 1, "Commencer", "mdi:play"));
     }
 
-    return { name: "Résumé", icon: "mdi:book-open-variant", card: { type: "vertical-stack", cards } };
+    cards.push({ type: "vertical-stack", cards: rightCards });
+
+    return { name: "Résumé", icon: "mdi:book-open-variant", card: { type: "horizontal-stack", cards } };
   }
 
   static _stepTab(section, step, tabIndex, isLast, config) {
