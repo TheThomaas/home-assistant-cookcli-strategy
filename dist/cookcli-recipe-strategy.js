@@ -224,7 +224,7 @@ class CookCliRecipeViewStrategy extends HTMLElement {
       content,
       card_mod: {
         style: `
-          img {
+          img[alt="image de la recette"] {
             width: 100%;
             max-height: 250px;
             object-fit: cover;
